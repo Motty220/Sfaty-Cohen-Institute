@@ -90,14 +90,14 @@
     });
 
     function generateHTML() {
-        const weeklyParasha = document.getElementById('weeklyParasha').value;
-        const downloadUrl = document.getElementById('downloadUrl').value;
+    const weeklyParasha = document.getElementById('weeklyParasha').value;
+    const downloadUrl = document.getElementById('downloadUrl').value;
 
-        const button1 = document.getElementById('generateButton');
-        button1.classList.add('success');
-        button1.innerText = 'נוצר בהצלחה';
+    const button1 = document.getElementById('generateButton');
+    button1.classList.add('success');
+    button1.innerText = 'נוצר בהצלחה';
 
-        const htmlTemplate = `<!DOCTYPE html>
+    const htmlTemplate = `<!DOCTYPE html>
 <html dir="rtl" lang="he">
 <head>
     <meta charset="UTF-8">
@@ -108,24 +108,68 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             background-color: #f4d03f;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #2c3e50;
         }
         img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
         }
+        .clickable-area {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #2c3e50;
+            color: #f4d03f;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .clickable-area:hover {
+            background-color: #34495e;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+        .overlay {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            text-shadow: 1px 1px 5px black;
+        }
     </style>
 </head>
 <body>
-    <img src="https://raw.githubusercontent.com/Motty220/test/refs/heads/main/LbMPVVaeee7W.gif" alt="אנימציה">
+    <div class="container">
+        <div class="overlay">
+        </div>
+        <img src="https://raw.githubusercontent.com/Motty220/test/refs/heads/main/%D7%A1%D7%95%D7%A4%D7%99/1(1).gif" alt="אנימציה">
+        <!-- הוספת שתי תמונות נוספות -->
+        <div class="additional-images">
+            <a href="${downloadUrl}" >
+                <img src="https://raw.githubusercontent.com/Motty220/test/refs/heads/main/%D7%A1%D7%95%D7%A4%D7%99/%D7%A9%D7%91%D7%95%D7%A2%20%D7%A0%D7%95%D7%9B%D7%97%D7%99.gif" alt="תמונה 1">
+            </a>
+                <img src="https://raw.githubusercontent.com/Motty220/test/refs/heads/main/%D7%A1%D7%95%D7%A4%D7%99/%D7%A7%D7%95%D7%93%D7%9E%D7%95%D7%AA.gif" alt="תמונה 2">
+            </a>
+        </div>
+    </div>
 </body>
-</html>`
+</html>
 
-
-        document.getElementById('preview').innerText = htmlTemplate;
-    }
+`
+    document.getElementById('preview').innerText = htmlTemplate;
+}
 
     function copyToClipboard() {
         const preview = document.getElementById('preview');
